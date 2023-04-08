@@ -10,3 +10,6 @@ cors
 nodemon
 dotenv
 eslint
+
+### Como configurar eslint:
+npx eslint --init

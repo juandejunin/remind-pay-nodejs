@@ -23,6 +23,7 @@
     "nodemon": "^2.0.22"
   },
   "devDependencies": {
-    "eslint": "^8.38.0"
+    "eslint": "^8.38.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

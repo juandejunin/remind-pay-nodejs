@@ -1,8 +1,7 @@
 const express = require('express')
+const app = express()
 
-app = express()
-
-PORT =  8080
+const PORT = 8080
 
 app.get('/', (req,res) => {
     res.status(200).send('Prueba index')
