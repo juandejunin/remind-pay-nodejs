@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 mongoose.set('strictQuery', true)
 require('dotenv').config()
 
-const BBDD_URI = process.env.BBDD_URI
+const BBDD_URI = process.env.URL_MONGO
 
 const connection = async () => {
   try {
