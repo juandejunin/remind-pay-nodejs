@@ -9,7 +9,12 @@ mongoose
 cors
 nodemon
 dotenv
-eslint
+standard
 
 ### Como configurar eslint:
-npx eslint --init
+npm i standard
+en json agragar las siguientes lineas
+
+  "eslintConfig": {
+    "extends":"./node_modules/standard/eslintrc.json"
+  },
