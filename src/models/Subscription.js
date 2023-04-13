@@ -1,17 +1,17 @@
-const mongoose = require('mongoose')
+const { mongoose, Schema } = require('mongoose')
 
 const SubscriptionSchema = mongoose.Schema({
-  name_subscription: {
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  nameSubscription: {
     type: String,
     required: true
   },
-  payment_date: {
+  paymentDate: {
     type: Date,
     required: true
-  },
-  user: {
-    type: mongoose.Typed.objectId,
-    ref: 'User'
   }
 
 })
