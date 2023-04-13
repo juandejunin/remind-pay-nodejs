@@ -1,9 +1,9 @@
 const express = require('express')
-const Subscription = require('../models/Subscription')
-const SubscriptionRouter = express.Router()
+const Subscription = require('../../models/Subscription')
+const subscriptionRouter = express.Router()
 
 // get Subscripcion
-SubscriptionRouter.get('/subscription', async (req, res) => {
+subscriptionRouter.get('/subscription', async (req, res) => {
   const subscription = await Subscription.find({})
   return res.status(200).send({
     success: true,
@@ -11,7 +11,7 @@ SubscriptionRouter.get('/subscription', async (req, res) => {
   })
 })
 
-SubscriptionRouter.get('/subscription/:id', async (req, res) => {
+subscriptionRouter.get('/subscription/:id', async (req, res) => {
   try {
     const { id } = req.params
     const subscription = await Subscription.findById(id)
@@ -36,7 +36,7 @@ SubscriptionRouter.get('/subscription/:id', async (req, res) => {
 })
 // Create Subscripcion
 
-SubscriptionRouter.post('/subscription', async (req, res) => {
+subscriptionRouter.post('/subscription', async (req, res) => {
   try {
     const { userId, body } = req
 
@@ -71,7 +71,7 @@ SubscriptionRouter.post('/subscription', async (req, res) => {
 })
 
 // Update Subscription
-SubscriptionRouter.put('/subscription/:id', async (req, res) => {
+subscriptionRouter.put('/subscription/:id', async (req, res) => {
   const { id } = req.params
 
   const subscriptioExists = await Subscription.findById({ _id: id })
@@ -104,7 +104,7 @@ SubscriptionRouter.put('/subscription/:id', async (req, res) => {
 })
 
 // Delete Subscription
-SubscriptionRouter.delete('/subscription/:id', async (req, res) => {
+subscriptionRouter.delete('/subscription/:id', async (req, res) => {
   try {
     const { id } = req.params
     await Subscription.findByIdAndDelete({ _id: id })
@@ -120,4 +120,4 @@ SubscriptionRouter.delete('/subscription/:id', async (req, res) => {
     })
   }
 })
-module.exports = SubscriptionRouter
+module.exports = subscriptionRouter
