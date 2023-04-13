@@ -10,7 +10,7 @@ UserRouter.get('/users', async (req, res) => {
   })
 })
 
-UserRouter.post('/users', async (req,res) => {
+UserRouter.post('/users', async (req, res) => {
   try {
     const {name, username, email, password } = req.body
     if (!name || !username || !email || !password) {

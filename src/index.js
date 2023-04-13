@@ -4,6 +4,7 @@ const app = express()
 require('dotenv').config()
 
 const UserRouter = require('./routes/UserRouter.js')
+const SubscriptionRouter = require('./routes/SubscripcionRouter.js')
 
 const PORT = process.env.PORT
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded())
 
 // Enrutado
 app.use('/api', UserRouter)
+app.use('/api', SubscriptionRouter)
 app.get('/', (req, res) => {
   res.status(200).send('Prueba index????')
 })
