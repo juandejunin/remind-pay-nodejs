@@ -45,7 +45,7 @@ en json agragar las siguientes lineas
 
   # Endpoint
 
-  ## Register
+  ## Register - Post
 
   ### http://localhost:<PORT>/api/users/register
 
@@ -72,7 +72,7 @@ retorna un json:
 
 En caso de registro exitoso retorna un email con un link para verigicar la cuenta
 
-## Login
+## Login - Post
 Una vez realizada la verificacion de la cuenta mediante el link enviado al correo electronico se puede acceder al login
 ### http://localhost:<PORT>/api/users/login
 
@@ -90,9 +90,27 @@ Retorna un json:
         "id": "6438f15d0d1c149e4264b565",
         "name": "name surname",
         "username": "abuela",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzhmMTVkMGQxYzE0OWU0MjY0YjU2NSIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0NTQ1NDQsImV4cCI6MTY4MTQ5Nzc0NH0.jY6fOvFITjZlOxhw0z57sFdQ6PgzN1gys2YDg62lq3c"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN2Q0NGQ1OWIzNiIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0ODQwMTYsImV4cCI6MTY4MTUyNzIxNn0.9PEyibsBrB0vSaYkOvJdks9tQTlXSkJiX0yOJQhtl-4"
     },
     "errorMsg": null
 }
 
 Este token retornado en este json sera el que deberemos usar para autenticarnos.
+
+## Modificar datos del usuario - Patch
+
+### Recibe Headers
+Key : Authorization
+Value: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN2Q0NGQ1OWIzNiIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0ODQwMTYsImV4cCI6MTY4MTUyNzIxNn0.9PEyibsBrB0vSaYkOvJdks9tQTlXSkJiX0yOJQhtl-4
+
+### Este Value esta compuesto por la palabra "bearer" y dejando un espacio pegar el token obtenido de el login
+
+### Un json con las modificaciones requeridas
+
+{
+    "name": "nuevonombre"
+}
+
+
+
+
