@@ -24,9 +24,13 @@ npm i
 ## Crear directorio .env en la raiz del proyecto
 
 PORT = XXXX
+
 URL_MONGO = //en este lugar pegar la contraseña de mongo atlas //
+
 JWT_SECRET_KEY = 'xxxxxxxxxxxxx'
+
 EMAIL_ACCOUNT = "xxxxxxxxxx@xxxxxx.xxx"
+
 EMAIL_PASSWORD = "xxxxxxxxxxxxxxxxxxx"
 
 URL_SIGNIN= 'https://www.marca.com/' //estas url son de ejemplo. Luego seran remplazadas por urls del frontend 
