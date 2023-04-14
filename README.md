@@ -50,7 +50,7 @@ en json agragar las siguientes lineas
 
   # Endpoint
 
-  ## Register
+  ## Register - POST
 
   ### http://localhost:8080/api/users/register
 
@@ -77,7 +77,7 @@ retorna un json:
 
 En caso de registro exitoso retorna un email con un link para verigicar la cuenta
 
-## Login
+## Login - POST
 Una vez realizada la verificacion de la cuenta mediante el link enviado al correo electronico se puede acceder al login
 ### http://localhost:8080/api/users/login
 
@@ -104,7 +104,7 @@ Retorna un json:
 
 Este token retornado en este json sera el que deberemos usar para autenticarnos.
 
-## Modificar datos del usuario - Patch
+## Modificar datos del usuario - PATCH
 
 ### Recibe Headers
 Key : Authorization
