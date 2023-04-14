@@ -8,7 +8,7 @@ const initUserSeguridad = () => {
   return { verified, cryptoToken, restorePassword }
 }
 
-const verificarUser = (user) => {
+const verifyUser = (user) => {
   return {
     verified: true,
     cryptoToken: null,
@@ -34,4 +34,4 @@ const passwordReset = (user) => {
   }
 }
 
-module.exports = { initUserSeguridad, verificarUser, buildForgotPassword, passwordReset }
+module.exports = { initUserSeguridad, verifyUser, buildForgotPassword, passwordReset }

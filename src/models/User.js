@@ -1,6 +1,6 @@
 const { Schema, model }  = require('mongoose')
 
-const UserSchema = Schema({
+const userSchema = Schema({
   name: {
     type: String,
     required: true
@@ -28,7 +28,14 @@ const UserSchema = Schema({
   }],
 })
 
-const User = model('User', UserSchema)
+userSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    delete returnedObject.password
+    delete returnedObject._id
+  }
+})
+
+const User = model('User', userSchema)
 
 const findOne = async (data) => {
   return await User.findOne(data)
