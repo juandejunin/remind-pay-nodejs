@@ -83,7 +83,8 @@ Una vez realizada la verificacion de la cuenta mediante el link enviado al corre
 
 Recibe un json:
 {
-    "email": "elmatedelabuela@gmail.com",
+    "email": "email@gmail.com",
+    
     "password": "password"
 }
 
