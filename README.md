@@ -34,6 +34,7 @@ EMAIL_ACCOUNT = "xxxxxxxxxx@xxxxxx.xxx"
 EMAIL_PASSWORD = "xxxxxxxxxxxxxxxxxxx"
 
 URL_SIGNIN= 'https://www.marca.com/' //estas url son de ejemplo. Luego seran remplazadas por urls del frontend 
+
 URL_REGISTER= 'https://www.youtube.com/'
 
 ### Como configurar eslint:
