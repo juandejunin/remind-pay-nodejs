@@ -97,7 +97,7 @@ Retorna un json:
         "id": "6438f15d0d1c149e4264b565",
         "name": "name surname",
         "username": "abuela",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzhmMTVkMGQxYzE0OWU0MjY0YjU2NSIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0NTQ1NDQsImV4cCI6MTY4MTQ5Nzc0NH0.jY6fOvFITjZlOxhw0z57sFdQ6PgzN1gys2YDg62lq3c"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN2Q0NGQ1OWIzNiIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0ODQwMTYsImV4cCI6MTY4MTUyNzIxNn0.9PEyibsBrB0vSaYkOvJdks9tQTlXSkJiX0yOJQhtl-4"
     },
     "errorMsg": null
 }
