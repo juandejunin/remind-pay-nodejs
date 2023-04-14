@@ -17,7 +17,7 @@ nodemailer
 
 https://github.com/juandejunin/remind-pay-nodejs.git
 
-## Inicializar
+## Instalar dependencias
 
 npm i 
 
@@ -42,3 +42,30 @@ en json agragar las siguientes lineas
 
   ## Levantar el servidor
   npm run dev
+
+  # Endpoint
+
+  http://localhost:<PORT>/api/users/register
+
+  Recibe un json:
+
+  {
+    "username": "username",
+    "name": "name,
+    "email": "email@gmail.com",
+    "password": "password"
+}
+
+retorna un json:
+
+{
+    "success": true,
+    "data": {
+        "msg": "Registered successfully. You must verify the account. Check your mail",
+        "id": "6438f15d0d1c149e4264b565"
+    },
+    "errorMsg": null
+}
+
+
+## En caso de registro exitoso retorna un email con un link para verigicar la cuenta
