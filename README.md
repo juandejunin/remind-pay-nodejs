@@ -82,6 +82,7 @@ Una vez realizada la verificacion de la cuenta mediante el link enviado al corre
 ### http://localhost:8080/api/users/login
 
 Recibe un json:
+
 {
     "email": "email@gmail.com",
     
