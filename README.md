@@ -45,7 +45,9 @@ en json agragar las siguientes lineas
 
   # Endpoint
 
-  http://localhost:<PORT>/api/users/register
+  ## Register
+
+  ### http://localhost:<PORT>/api/users/register
 
   Recibe un json:
 
@@ -68,4 +70,29 @@ retorna un json:
 }
 
 
-## En caso de registro exitoso retorna un email con un link para verigicar la cuenta
+En caso de registro exitoso retorna un email con un link para verigicar la cuenta
+
+## Login
+Una vez realizada la verificacion de la cuenta mediante el link enviado al correo electronico se puede acceder al login
+### http://localhost:<PORT>/api/users/login
+
+Recibe un json:
+{
+    "email": "elmatedelabuela@gmail.com",
+    "password": "password"
+}
+
+Retorna un json:
+
+{
+    "success": true,
+    "data": {
+        "id": "6438f15d0d1c149e4264b565",
+        "name": "name surname",
+        "username": "abuela",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzhmMTVkMGQxYzE0OWU0MjY0YjU2NSIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0NTQ1NDQsImV4cCI6MTY4MTQ5Nzc0NH0.jY6fOvFITjZlOxhw0z57sFdQ6PgzN1gys2YDg62lq3c"
+    },
+    "errorMsg": null
+}
+
+Este token retornado en este json sera el que deberemos usar para autenticarnos.
