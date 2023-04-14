@@ -103,3 +103,17 @@ Retorna un json:
 }
 
 Este token retornado en este json sera el que deberemos usar para autenticarnos.
+
+## Modificar datos del usuario - Patch
+
+### Recibe Headers
+Key : Authorization
+Value: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN2Q0NGQ1OWIzNiIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0ODQwMTYsImV4cCI6MTY4MTUyNzIxNn0.9PEyibsBrB0vSaYkOvJdks9tQTlXSkJiX0yOJQhtl-4
+
+### Este Value esta compuesto por la palabra "bearer" y dejando un espacio pegar el token obtenido de el login
+
+### Un json con las modificaciones requeridas
+
+{
+    "name": "nuevonombre"
+}
