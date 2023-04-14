@@ -42,7 +42,7 @@ const findOne = async (data) => {
 }
 
 const findById = async (id) => {
-  return await User.findById(id).populate('courses')
+  return await User.findById(id)
 }
 
 const create = async (newUserData) => {
