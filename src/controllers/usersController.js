@@ -41,8 +41,23 @@ const loginUser = async (req, res, next) => {
   }
 }
 
+const modifyUser = async (req, res, next) => {
+  try {
+    const { success, data, errorMsg, statusCode } = await userService.modifyUser(req)
+    const response = {
+      success,
+      data,
+      errorMsg
+    }
+    res.status(statusCode).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   userRegister,
   verifyEmail,
-  loginUser
+  loginUser,
+  modifyUser
 }

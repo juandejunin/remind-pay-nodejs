@@ -115,15 +115,48 @@ const loginUser = async (req) => {
   return createResponse(false, null, 'Invalid email o password', 401)
 }
 
+const modifyUser = async (req) => {
+  let data = null
+
+  const { userId, body } = req
+  const { username, name, password } = body
+
+  const userExists = await User.findById(userId)
+
+  if (!userExists) {
+    return createResponse(false, data, USER_ERROR, 400)
+  }
+
+  const usernameExists = await User.findOne({ username })
+
+  if (userExists.username !== username && usernameExists) {
+    return createResponse(false, data, 'Username already exists', 400)
+  }
+  const passwordHash = password ? await bcrypt.hash(password, SALT_ROUNDS) : userExists.password
+
+  userExists.username = username || userExists.username
+  userExists.name = name || userExists.name
+  userExists.password = passwordHash
+
+  const userUpdated = await User.update(userId, userExists)
+
+  data = {
+    id: userUpdated._id,
+    name: userUpdated.name,
+    username: userUpdated.username
+  }
+
+  return createResponse(true, data, null, 201)
+}
 module.exports = {
   userRegister,
   verifyEmail,
-  loginUser
+  loginUser,
+  modifyUser
   //   renovarToken,
 
   //   subirFotoUsuario,
 
-  //   modificarUsuario,
   //   resetPassword,
   //   forgotPassword
 }

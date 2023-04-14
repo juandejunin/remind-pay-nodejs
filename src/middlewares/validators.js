@@ -20,7 +20,7 @@ const loginValidator = [
     .isLength({ min: 6 }).withMessage('Password must have at least 6 characters')
 ]
 
-const modificarUsuarioValidator = [
+const modifyUserValidator = [
   body('password').optional({ nullable: true }).isString().withMessage('Invalid password')
     .isLength({ min: 6 }).withMessage('Password must have at least 6 characters'),
 
@@ -31,4 +31,4 @@ const modificarUsuarioValidator = [
 
 
 
-module.exports = { registroValidator, loginValidator, modificarUsuarioValidator }
+module.exports = { registroValidator, loginValidator, modifyUserValidator }
