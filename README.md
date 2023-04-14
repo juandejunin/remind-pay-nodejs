@@ -47,7 +47,7 @@ en json agragar las siguientes lineas
 
   ## Register
 
-  ### http://localhost:<PORT>/api/users/register
+  ### http://localhost:8080/api/users/register
 
   Recibe un json:
 
@@ -74,7 +74,7 @@ En caso de registro exitoso retorna un email con un link para verigicar la cuent
 
 ## Login
 Una vez realizada la verificacion de la cuenta mediante el link enviado al correo electronico se puede acceder al login
-### http://localhost:<PORT>/api/users/login
+### http://localhost:8080/api/users/login
 
 Recibe un json:
 {
