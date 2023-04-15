@@ -1,6 +1,10 @@
 # remind-pay-nodejs
 
 ## API Rest de la aplicacion REMIND PAY construida en NodeJs
+
+## Instalar nodejs
+https://nodejs.org/es/download
+
 ### Dependencias utilizadas:
 express
 express-validator
