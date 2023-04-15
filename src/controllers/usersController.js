@@ -14,6 +14,20 @@ const userRegister = async (req, res, next) => {
   }
 }
 
+const renewToken = async (req, res, next) => {
+  try {
+    const { success, data, errorMsg, statusCode } = await userService.renewToken(req)
+    const response = {
+      success,
+      data,
+      errorMsg
+    }
+    res.status(statusCode).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
 const verifyEmail = async (req, res, next) => {
   try {
     const { success } = await userService.verifyEmail(req)
@@ -54,10 +68,41 @@ const modifyUser = async (req, res, next) => {
     next(error)
   }
 }
+const resetPassword = async (req, res, next) => {
+  try {
+    const { success, data, errorMsg, statusCode } = await userService.resetPassword(req)
+    const response = {
+      success,
+      data,
+      errorMsg
+    }
+    res.status(statusCode).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
+const forgotPassword = async (req, res, next) => {
+  try {
+    const { success, data, errorMsg, statusCode } = await userService.forgotPassword(req)
+    const response = {
+      success,
+      data,
+      errorMsg
+    }
+    res.status(statusCode).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
 
 module.exports = {
   userRegister,
+  renewToken,
   verifyEmail,
   loginUser,
-  modifyUser
+  modifyUser,
+  resetPassword,
+  forgotPassword
 }

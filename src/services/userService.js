@@ -49,6 +49,34 @@ const userRegister = async (req) => {
   return createResponse(true, data, null, 201)
 }
 
+const renewToken = async (req) => {
+  let data = null
+  const { userName, userId } = req
+
+  const userExists = await User.findById(userId)
+  console.log(userExists)
+
+  if (!userExists) {
+    return createResponse(false, data, USER_ERROR, 400)
+  }
+
+  const userToken = {
+    id: userId,
+    name: userName
+  }
+
+  const token = signToken(userToken)
+
+  data = {
+    token,
+    id: userId,
+    name: userName,
+    username: userExists.username
+  }
+
+  return createResponse(true, data, null, 200)
+}
+
 const verifyEmail = async (req) => {
   let data = null
   const { cryptoToken } = req.params
@@ -148,15 +176,75 @@ const modifyUser = async (req) => {
 
   return createResponse(true, data, null, 201)
 }
+
+const resetPassword = async (req) => {
+  let data = null
+  const { headers, body } = req
+  const { userid, cryptotoken } = headers
+  const { password } = body
+
+  if (!password) {
+    return createResponse(false, data, 'You must inform the new password', 400)
+  }
+
+  const userExists = await User.findOne({
+    _id: userid,
+    'security.cryptoToken': cryptotoken,
+    'security.restorePassword': true
+  })
+
+  if (!userExists) {
+    return createResponse(false, data, USER_ERROR, 400)
+  }
+
+  userExists.security = passwordReset(userExists)
+  const passwordHash = await bcrypt.hash(password, SALT_ROUNDS)
+  userExists.password = passwordHash
+
+  await User.update(userExists._id, userExists)
+
+  await sendChangedPasswordMail(userExists)
+
+  data = {
+    msg: 'The password has been updated'
+  }
+
+  return createResponse(true, data, null, 200)
+}
+
+const forgotPassword = async (req) => {
+  let data = null
+  const { email } = req.body
+
+  if (!email) {
+    return createResponse(false, data, 'You must provide the email to recover the password', 400)
+  }
+
+  const userExists = await User.findOne({ email })
+
+  if (!userExists) {
+    return createResponse(false, data, USER_ERROR, 400)
+  }
+
+  userExists.security = buildForgotPassword(userExists)
+
+  const userUpdated = await User.update(userExists._id, userExists)
+  await sendForgotPasswordMail(userUpdated)
+
+  data = {
+    msg: 'You have requested to change your password',
+    id: userUpdated._id,
+    cryptoToken: userUpdated.security?.cryptoToken
+  }
+
+  return createResponse(true, data, null, 200)
+}
 module.exports = {
   userRegister,
   verifyEmail,
   loginUser,
-  modifyUser
-  //   renovarToken,
-
-  //   subirFotoUsuario,
-
-  //   resetPassword,
-  //   forgotPassword
+  modifyUser,
+  renewToken,
+  resetPassword,
+  forgotPassword
 }
