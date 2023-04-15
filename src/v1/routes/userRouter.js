@@ -17,6 +17,6 @@ userRouter.route('/users/:id').patch(tokenValidator, modifyUserValidator, userCo
 // Ruta de reseteo del password
 userRouter.route('/users/reset').post(userController.resetPassword)
 // Ruta de contraseña olvidada
-userRouter.route('/users/forgot/password').post(userController.forgotPassword)
+userRouter.route('/users/forgot-password').post(userController.forgotPassword)
 
 module.exports = userRouter

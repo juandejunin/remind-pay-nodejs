@@ -99,6 +99,11 @@ Este token retornado en este json sera el que deberemos usar para autenticarnos.
 
 ## Modificar datos del usuario - Patch
 
+http://localhost:8080/api/users/:id
+
+### Recibe el id del usuario por parametro, por ejemplo 
+http://localhost:8080/api/users/64395e7ff54ced7d44d59b36
+
 ### Recibe Headers
 Key : Authorization
 Value: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN2Q0NGQ1OWIzNiIsIm5hbWUiOiJuYW1lIHN1cm5hbWUiLCJpYXQiOjE2ODE0ODQwMTYsImV4cCI6MTY4MTUyNzIxNn0.9PEyibsBrB0vSaYkOvJdks9tQTlXSkJiX0yOJQhtl-4
@@ -110,6 +115,60 @@ Value: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN
 {
     "name": "nuevonombre"
 }
+
+
+## Recuperer contraseña olvidada - POST
+
+
+http://localhost:8080/api/users/forgot-password
+
+### Recibe un json con el correo electronico:
+
+{
+    "email": "elmatedelabuela@gmail.com"
+}
+
+### Retorna un json con el id y el token para resetear la contraseña
+
+{
+    "success": true,
+    "data": {
+        "msg": "You have requested to change your password",
+        "id": "64395e7ff54ced7d44d59b36",
+        "cryptoToken": "61deafd5b495e052a731649d3bf18292"
+    },
+    "errorMsg": null
+}
+
+
+## Resetear la contraseña - POST
+
+http://localhost:8080/api/users/reset
+
+### Recibe headers obtenidos en la respuesta anterior:
+
+Key: userid        Value: 64395e7ff54ced7d44d59b36
+
+Key: cryptotoken    Value: 61deafd5b495e052a731649d3bf18292
+
+### Recibe por Body un Json:
+
+{    
+    "password":"newpassword"
+}
+
+
+### Retorna un json con el resultado de la solicitud
+
+{
+    "success": true,
+    "data": {
+        "msg": "The password has been updated"
+    },
+    "errorMsg": null
+}
+
+
 
 
 

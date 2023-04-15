@@ -54,6 +54,7 @@ const renewToken = async (req) => {
   const { userName, userId } = req
 
   const userExists = await User.findById(userId)
+  console.log(userExists)
 
   if (!userExists) {
     return createResponse(false, data, USER_ERROR, 400)
