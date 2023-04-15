@@ -24,12 +24,17 @@ npm i
 ## Crear directorio .env en la raiz del proyecto
 
 PORT = XXXX
+
 URL_MONGO = //en este lugar pegar la contraseña de mongo atlas //
+
 JWT_SECRET_KEY = 'xxxxxxxxxxxxx'
+
 EMAIL_ACCOUNT = "xxxxxxxxxx@xxxxxx.xxx"
+
 EMAIL_PASSWORD = "xxxxxxxxxxxxxxxxxxx"
 
 URL_SIGNIN= 'https://www.marca.com/' //estas url son de ejemplo. Luego seran remplazadas por urls del frontend 
+
 URL_REGISTER= 'https://www.youtube.com/'
 
 ### Como configurar eslint:
@@ -45,9 +50,9 @@ en json agragar las siguientes lineas
 
   # Endpoint
 
-  ## Register - Post
+  ## Register - POST
 
-  ### http://localhost:<PORT>/api/users/register
+  ### http://localhost:8080/api/users/register
 
   Recibe un json:
 
@@ -72,13 +77,15 @@ retorna un json:
 
 En caso de registro exitoso retorna un email con un link para verigicar la cuenta
 
-## Login - Post
+## Login - POST
 Una vez realizada la verificacion de la cuenta mediante el link enviado al correo electronico se puede acceder al login
-### http://localhost:<PORT>/api/users/login
+### http://localhost:8080/api/users/login
 
 Recibe un json:
+
 {
-    "email": "elmatedelabuela@gmail.com",
+    "email": "email@gmail.com",
+    
     "password": "password"
 }
 
@@ -97,12 +104,7 @@ Retorna un json:
 
 Este token retornado en este json sera el que deberemos usar para autenticarnos.
 
-## Modificar datos del usuario - Patch
-
-http://localhost:8080/api/users/:id
-
-### Recibe el id del usuario por parametro, por ejemplo 
-http://localhost:8080/api/users/64395e7ff54ced7d44d59b36
+## Modificar datos del usuario - PATCH
 
 ### Recibe Headers
 Key : Authorization
@@ -116,57 +118,6 @@ Value: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN
     "name": "nuevonombre"
 }
 
-
-## Recuperer contraseña olvidada - POST
-
-
-http://localhost:8080/api/users/forgot-password
-
-### Recibe un json con el correo electronico:
-
-{
-    "email": "elmatedelabuela@gmail.com"
-}
-
-### Retorna un json con el id y el token para resetear la contraseña
-
-{
-    "success": true,
-    "data": {
-        "msg": "You have requested to change your password",
-        "id": "64395e7ff54ced7d44d59b36",
-        "cryptoToken": "61deafd5b495e052a731649d3bf18292"
-    },
-    "errorMsg": null
-}
-
-
-## Resetear la contraseña - POST
-
-http://localhost:8080/api/users/reset
-
-### Recibe headers obtenidos en la respuesta anterior:
-
-Key: userid        Value: 64395e7ff54ced7d44d59b36
-
-Key: cryptotoken    Value: 61deafd5b495e052a731649d3bf18292
-
-### Recibe por Body un Json:
-
-{    
-    "password":"newpassword"
-}
-
-
-### Retorna un json con el resultado de la solicitud
-
-{
-    "success": true,
-    "data": {
-        "msg": "The password has been updated"
-    },
-    "errorMsg": null
-}
 
 
 
