@@ -117,10 +117,3 @@ Value: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk1ZTdmZjU0Y2VkN
 {
     "name": "nuevonombre"
 }
-
-
-
-
-
-
-
